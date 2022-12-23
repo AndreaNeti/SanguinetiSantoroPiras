@@ -630,7 +630,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
                 width=\textwidth,
                 height=0.6\textheight,
                 keepaspectratio]{SeqDia/DeleteBooking}
-            \caption{Delete a booked reservation}
+            \caption{Delete a booked charging process}
             \label{fig:DeleteBooking}
             \end{center}
         \end{figure}
@@ -763,9 +763,9 @@ In this section, the requirements for the two subsystems will be described as al
     \hline
     \textbf{FRE\row} & Booked Charging Socket ID & The system shall show the Driver the booked socket ID number.\T\B\\
     \hline
-    \textbf{FRE\row} & Delete Reservation & The Driver shall be able to delete a booked reservation before its reservation time.\T\B\\
+    \textbf{FRE\row} & Delete Booking & The Driver shall be able to delete a booked charging process before its starting time.\T\B\\
     \hline
-    \textbf{FRE\row} & Confirm Reservation & The Driver shall receive a notification that confirms the reservation went well.\T\B\\
+    \textbf{FRE\row} & Confirm Booking & The Driver shall receive a notification that confirms the booking went well.\T\B\\
     \hline
     \textbf{FRE\row} & Start Charging Process & As soon as the booked time starts the Driver shall be able to start the recharging process.\T\B\\
     \hline
@@ -1112,7 +1112,7 @@ Here there is the description of the requirements that are in common between the
     % Domain Assumptions
     \rowcolor{bluepoli!5} D2 & The Driver needs to know his personal data before signing up.  \\
     \hline
-    \rowcolor{bluepoli!5} D3 & Every time the driver makes a reservation then he will show up in time at the charging station. \\
+    \rowcolor{bluepoli!5} D3 & Every time the driver books a charging process then he will show up in time at the charging station. \\
     \hline   
     \rowcolor{bluepoli!5} D5 & Every time the recharging process ends the driver leaves the station with his vehicle, which he first disconnects from the socket. \\
     \hline  
@@ -1146,9 +1146,9 @@ Here there is the description of the requirements that are in common between the
     \hline
     \rowcolor{bluepoli!15} FRE10 & The system shall show the Driver the booked socket ID number. \\
     \hline
-    \rowcolor{bluepoli!15} FRE11 &  The Driver shall be able to delete a booked reservation before its reservation time.\\
+    \rowcolor{bluepoli!15} FRE11 &  The Driver shall be able to delete a booked charging process before its starting time.\\
     \hline
-    \rowcolor{bluepoli!15} FRE12 & The Driver shall receive a notification that confirms the reservation went well. \\
+    \rowcolor{bluepoli!15} FRE12 & The Driver shall receive a notification that confirms the booking went well. \\
     \hline
     \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
     \hline
@@ -1168,7 +1168,7 @@ Here there is the description of the requirements that are in common between the
     % Domain Assumptions
     \rowcolor{bluepoli!5} D2 &The Driver needs to know his personal data before signing up.. \\
     \hline 
-    \rowcolor{bluepoli!5} D4 & When the Driver shows up during the time slot he booked, he’ll always find at least one charging socket of the booked type available. \\
+    \rowcolor{bluepoli!5} D4 & When the Driver shows up during the time slot he booked, he’ll always find his booked charging socket available. \\
     \hline  
     \rowcolor{bluepoli!5} D5 & Every time the recharging process ends the driver leaves the station with his vehicle, which he first disconnects from the socket \\
     \hline  
@@ -1225,9 +1225,9 @@ Here there is the description of the requirements that are in common between the
     \hline
     \rowcolor{bluepoli!5} D2 & The Driver needs to know his personal data before signing up.\\
     \hline
-    \rowcolor{bluepoli!5} D3 & Every time the driver makes a reservation then he will show up in time at the charging station.\\
+    \rowcolor{bluepoli!5} D3 & Every time the driver books a charging process then he will show up in time at the charging station.\\
     \hline
-    \rowcolor{bluepoli!5} D4 & When the Driver shows up during the time slot he booked, he’ll always find at least one charging socket of the booked type available.\\
+    \rowcolor{bluepoli!5} D4 & When the Driver shows up during the time slot he booked, he’ll always find his booked charging socket available.\\
     \hline
     \rowcolor{bluepoli!5} D5 & Every time the recharging process ends the driver leaves the station with his vehicle, which he first disconnects from the socket.\\
     \hline    
@@ -1369,7 +1369,7 @@ Here there is the description of the requirements that are in common between the
     % Domain Assumptions
     \rowcolor{bluepoli!5} D10 & There exists a standard communication protocol that permits the charging sockets and charging stations to communicate with the CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time).\\
     \hline    
-    \rowcolor{bluepoli!5} D11 & There exists an uniform API that allows to retrieve information about DSOs, such as price and energy capacity. \\
+    \rowcolor{bluepoli!5} D11 & There exists a uniform API that allows to retrieve information about DSOs, such as price and energy capacity. \\
     \hline
     \rowcolor{bluepoli!5} D15& There exists an API endpoint on eMall where the CPMS can confirm the credentials inserted by the CPO\\
     \hline
