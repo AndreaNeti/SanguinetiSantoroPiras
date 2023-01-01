@@ -52,7 +52,8 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
 \begin{itemize}
     %\item \textbf{Charging station} - The CPMS communicates with charging stations and charging socket in order to receive data about physical events such as vehicle connected or charge finished and perform operations, like starting a charge. 
     \item \textbf{Payment API} - In order for the Driver to pay the relative CPO for the given charging service, the eMSP uses an external API that allows and manages payments.
-    \item \textbf{Maps API} - In order to show to the Driver where all the charging stations are located, the eMSP uses external API that provides up-to-date maps.
+    \item \textbf{Maps API} - In order to show the Driver where all the charging stations are located, the eMSP uses an external API that provides up-to-date maps.
+    \item \textbf{Calendar API} - In order to generate suggestions for the Driver, the eMSP application can check the calendar events through this API.
     \item \textbf{eMall API} - The eMall system provides the following APIs in order to let the eMSP and the CPMS communicate with it:
         \begin{itemize}
             \item \textbf{Confirming credentials} - The CPO credentials used to access the CPMS are authenticated on the eMall system.
@@ -181,7 +182,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \textbf{Event Flow} &     
         \begin{enumerate}
             \item The Driver opens the eMSP application and gets on the Map view
-            \item The Driver moves to area in which he wants to see all the charging stations
+            \item (opt) The Driver moves to the area in which he wants to see all the charging stations
             \item (opt) The Driver selects the charging type filter to apply to the map
             \item The eMSP processes the request and returns the charging stations on the map that match the filters in that area
         \end{enumerate}\T\B\\
@@ -325,7 +326,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \hline
         \textbf{Exit Condition} & The charge has been ended \T\B\\
         \hline
-        \textbf{Exception} & The eMSP can't process the request of booking due to an error while communicating with the CMPS. The exception is notified to the Driver. \T\B\\
+        \textbf{Exception} & The eMSP can't process the booking request due to an error while communicating with the CMPS. The exception is notified to the Driver. \T\B\\
         \hline
     \end{tabular}
     \end{table}
@@ -593,7 +594,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
             \begin{center}
             \includegraphics[
                 width=\textwidth,
-                height=0.32\textheight,
+                height=0.43\textheight,
                 keepaspectratio]{SeqDia/Map}
             \caption{Check Map of the eMSP}
             \label{fig:Map}
@@ -604,7 +605,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
             \begin{center}
             \includegraphics[
                 width=\textwidth,
-                height=0.48\textheight,
+                height=0.4\textheight,
                 keepaspectratio]{SeqDia/CheckStationInfo}
             \caption{Check Station Info}
             \label{fig:CheckStationInfo}
@@ -735,7 +736,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
 \end{enumerate}
 \restoregeometry
 \subsection{eMSP Requirements}
-In this section, the requirements for the two subsystems will be described as also their interactions. For both the Drivers and the CPOs it is required to be logged in to the system in order to perform any action different from 
+In this section, the requirements for the two subsystems will be described as also their interactions. For both the Drivers and the CPOs it is required to be logged in to the system in order to perform any action different from Login and Registration
 \begin{longtable}
 {| p{0.12\linewidth} |p{0.28\linewidth} | p{0.6\linewidth} |}
     \hline
@@ -1050,6 +1051,8 @@ Here there is the description of the requirements that are in common between the
     \hline
     \textbf{D\row} & & & & &X & &\T\B\\
     \hline
+    \textbf{D\row} & & & & & X & & \T\B\\
+    \hline
     \textbf{D\row} & & & & & & X &X\T\B\\
     \hline
     \textbf{D\row} & & & & & & X &\T\B\\
@@ -1116,9 +1119,9 @@ Here there is the description of the requirements that are in common between the
     \hline   
     \rowcolor{bluepoli!5} D5 & Every time the recharging process ends the driver leaves the station with his vehicle, which he first disconnects from the socket. \\
     \hline  
-    \rowcolor{bluepoli!5} D13 & There exists an API endpoint where the eMSP can retrieve the map of a certain area. \\
+    \rowcolor{bluepoli!5} D14 & There exists an API endpoint where eMSPs can retrieve the map of a certain area.\\
     \hline 
-    \rowcolor{bluepoli!5} D14 & There exists an API endpoint on eMall where the CPMS can retrieve a list of all eMSPs. \\
+    \rowcolor{bluepoli!5} D15 & There exists an API endpoint on eMall where CPMSs can retrieve a list of all eMSPs.\\
     \hline 
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
@@ -1166,7 +1169,7 @@ Here there is the description of the requirements that are in common between the
     \rowcolor{bluepoli!15} FRE58 & CPMS updates about the data of the newly createdc harging station such as location, prices, supported charging type. \\
     \hline
     % Domain Assumptions
-    \rowcolor{bluepoli!5} D2 &The Driver needs to know his personal data before signing up.. \\
+    \rowcolor{bluepoli!5} D2 & The Driver needs to know his personal data before signing up.. \\
     \hline 
     \rowcolor{bluepoli!5} D4 & When the Driver shows up during the time slot he booked, he’ll always find his booked charging socket available. \\
     \hline  
@@ -1174,7 +1177,7 @@ Here there is the description of the requirements that are in common between the
     \hline  
     \rowcolor{bluepoli!5} D8 & Each charging socket has a unique ID relative to its charging station. \\
     \hline    
-    \rowcolor{bluepoli!5} D14 & There exists an API endpoint on eMall where the CPMS can retrieve a list of all eMSPs. \\
+    \rowcolor{bluepoli!5} D15 & There exists an API endpoint on eMall where CPMSs can retrieve a list of all eMSPs.\\
     \hline 
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
@@ -1221,7 +1224,7 @@ Here there is the description of the requirements that are in common between the
     \rowcolor{bluepoli!15} FRE54 & The eMSP shall be able to ask for the estimated ending time for a specific charging process. \\
     \hline
     % Domain Assumptions
-    \rowcolor{bluepoli!5} D1 & The Driver's vehicle is electric and has a battery.\\
+    \rowcolor{bluepoli!5} D1 & The Driver's vehicle is electric and has a battery able to be recharged with all the charging sockets.\\
     \hline
     \rowcolor{bluepoli!5} D2 & The Driver needs to know his personal data before signing up.\\
     \hline
@@ -1233,12 +1236,12 @@ Here there is the description of the requirements that are in common between the
     \hline    
     \rowcolor{bluepoli!5} D6& If a vehicle is connected to a charging socket, then it delivers energy only after a driver starts the charging process booked for that socket.\\
     \hline
-    \rowcolor{bluepoli!5} D7 & The energy deployed by the charging socket is only used to recharge the vehicle batteries.\\
+    \rowcolor{bluepoli!5} D7 & The energy deployed by the charging sockets is only used to recharge the vehicle battery.\\
     \hline 
     \rowcolor{bluepoli!5} D8 &
     Each charging socket has a unique ID relative to its charging station.\\
     \hline
-    \rowcolor{bluepoli!5} D14 & There exists an API endpoint on eMall where the CPMS can retrieve a list of all eMSPs. \\
+    \rowcolor{bluepoli!5} D15 & There exists an API endpoint on eMall where CPMSs can retrieve a list of all eMSPs.\\
     \hline
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
@@ -1275,10 +1278,9 @@ Here there is the description of the requirements that are in common between the
     % Domain Assumptions
     \rowcolor{bluepoli!5} D2 & The Driver needs to know his personal data before signing up. \\
     \hline 
-    \rowcolor{bluepoli!5} D12& 
-    There exists an external API that handles payments. \\
+    \rowcolor{bluepoli!5} D13& There exists an external API that handles payments. \\
     \hline
-    \rowcolor{bluepoli!5} D14 & There exists an API endpoint on eMall where the CPMS can retrieve a list of all eMSPs. \\
+    \rowcolor{bluepoli!5} D15 & There exists an API endpoint on eMall where CPMSs can retrieve a list of all eMSPs.\\
     \hline  
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
@@ -1320,19 +1322,21 @@ Here there is the description of the requirements that are in common between the
     \hline
     \rowcolor{bluepoli!15} FRE56 & CPMS updates the price of a charging type in a station. \\
     \hline  
-    \rowcolor{bluepoli!15} FRE57 & CPMS updates the offer of a charging type in a station \\
+    \rowcolor{bluepoli!15} FRE57 & CPMS updates the offer of a charging type in a station. \\
     \hline  
      \rowcolor{bluepoli!15}
-     FRE58 & CPMS update about the data of the newly created charging station such as location, prices, supported charging types. \\
+     FRE58 & CPMS update about the data of the newly created charging station such as location, prices, supported charging types.\\
      \hline
     
     % Domain Assumptions
     % pochi domain? ne mancano?
     \rowcolor{bluepoli!5} D2 & The Driver needs to know his personal data before signing up. \\
     \hline 
-    \rowcolor{bluepoli!5} D9 & The driver is able to create a connection between his device and his vehicle that permits to retrieve from it reliable data about the navigation system, the vehicle’s battery status and location. \\
+    \rowcolor{bluepoli!5} D9 & The driver is able to create a connection between his device and his vehicle that permits to retrieve from it reliable data about the navigation system, the vehicle’s battery status and location.\\
     \hline 
-    \rowcolor{bluepoli!5} D14 &There exists an API endpoint on eMall where the CPMS can retrieve a list of all eMSPs. \\
+    \rowcolor{bluepoli!5} D10 & There exists an API that allows retrieving data about calendar events on the Driver’s device.\\
+    \hline 
+    \rowcolor{bluepoli!5} D15 & There exists an API endpoint on eMall where CPMSs can retrieve a list of all eMSPs.\\
     \hline 
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
@@ -1367,11 +1371,11 @@ Here there is the description of the requirements that are in common between the
     \rowcolor{bluepoli!15} FRE45 &  The system shall allow the CPO to apply discounts for the energy prices of a managed charging station until a set expiration date.\\
     \hline
     % Domain Assumptions
-    \rowcolor{bluepoli!5} D10 & There exists a standard communication protocol that permits the charging sockets and charging stations to communicate with the CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time).\\
+    \rowcolor{bluepoli!5} D11 & There exists a standard communication protocol that permits charging sockets and charging stations to communicate with their CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time).\\
     \hline    
-    \rowcolor{bluepoli!5} D11 & There exists a uniform API that allows to retrieve information about DSOs, such as price and energy capacity. \\
+    \rowcolor{bluepoli!5} D12 & There exists a uniform API that allows to retrieve information about DSOs, such as price and energy capacity. \\
     \hline
-    \rowcolor{bluepoli!5} D15& There exists an API endpoint on eMall where the CPMS can confirm the credentials inserted by the CPO\\
+    \rowcolor{bluepoli!5} D16 & There exists an API endpoint on eMall where CPMSs can confirm the credentials inserted by the CPO.\\
     \hline
 \end{longtable}}
 % MAPPING GOAL 7
@@ -1404,9 +1408,9 @@ Here there is the description of the requirements that are in common between the
     \rowcolor{bluepoli!15} FRE54& The eMSP shall be able to ask for the estimated ending time for a specific charging process.\\
     \hline
     % Domain Assumptions
-    \rowcolor{bluepoli!5} D10 & There exists a standard communication protocol that permits the charging sockets and charging stations to communicate with the CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time). \\
+    \rowcolor{bluepoli!5} D11 & There exists a standard communication protocol that permits charging sockets and charging stations to communicate with their CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time).\\
     \hline 
-    \rowcolor{bluepoli!5} D15& There exists an API endpoint on eMall where the CPMS can confirm the credentials inserted by the CPO\\
+    \rowcolor{bluepoli!5} D16& There exists an API endpoint on eMall where CPMSs can confirm the credentials inserted by the CPO.\\
     \hline
 \end{longtable}
 \label{subsec:mappingOnGoals}
@@ -1572,6 +1576,7 @@ For the CPMS system, the performance requirements are the following:
         \item Charging sockets with a universal plug in order to be able to connect to most electric vehicles.
         %\item A charging station with sockets capable of providing charging information to the CPMS.
     \end{itemize}
+    \newpage
     \item eMSP and CPMS Servers:
     \begin{itemize}
         \item Stable network connection to keep the server up.

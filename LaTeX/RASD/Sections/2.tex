@@ -129,12 +129,12 @@ A CPO registered on eMall who can use all the functionalities offered by its CMP
 
 \subsection{Domain Assumptions} %AS
 \label{subsec:domainAssumptions}
-    \begin{longtable}{| p{0.15\linewidth} | p{0.8\linewidth} |}
+    \begin{longtable}{| p{0.06\linewidth} | p{0.92\linewidth} |}
     \hline
     \rowcolor{bluepoli!40}
      \textbf{ID} & \textbf{Description} \T\B \\
     \hline \hline
-    \textbf{D\row} & The Driver's vehicle is electric and has a battery able to be recharged with all the charging socket.\T\B\\
+    \textbf{D\row} & The Driver's vehicle is electric and has a battery able to be recharged with all the charging sockets.\T\B\\
     \hline
     \textbf{D\row} & The Driver needs to know his personal data before signing up.\T\B\\
     \hline
@@ -146,23 +146,25 @@ A CPO registered on eMall who can use all the functionalities offered by its CMP
     \hline    
     \textbf{D\row} & If a vehicle is connected to a charging socket, then it delivers energy only after a driver starts the charging process booked for that socket.\T\B\\
     \hline
-    \textbf{D\row} & The energy deployed by the charging socket is only used to recharge the vehicle battery.\T\B\\
+    \textbf{D\row} & The energy deployed by the charging sockets is only used to recharge the vehicle battery.\T\B\\
     \hline
     \textbf{D\row} & Each charging socket has a unique ID relative to its charging station.\T\B\\
     \hline
     \textbf{D\row} & The driver is able to create a connection between his device and his vehicle that permits to retrieve from it reliable data about the navigation system, the vehicle’s battery status and location.\T\B\\
-    \hline
-    \textbf{D\row} & There exists a standard communication protocol that permits the charging sockets and charging stations to communicate with the CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time). \T\B\\
     \hline    
-    \textbf{D\row} & There exists a uniform API that allows retrieval information about DSOs, such as price and energy capacity. \T\B\\
+    \textbf{D\row} & There exists an API that allows retrieving data about calendar events on the Driver's device.\T\B\\
+    \hline
+    \textbf{D\row} & There exists a standard communication protocol that permits charging sockets and charging stations to communicate with their CPMS in order to notify it of events like vehicle connection and disconnection or data about the charging status (completed, in process, remaining charging time). \T\B\\
+    \hline    
+    \textbf{D\row} & There exists a uniform API that allows retrieving data about DSOs, such as price and energy capacity. \T\B\\
     \hline
     \textbf{D\row} & There exists an external API that handles payments.\T\B\\
     \hline
-    \textbf{D\row} & There exists an API endpoint where the eMSP can retrieve the map of a certain area.\T\B\\
+    \textbf{D\row} & There exists an API endpoint where eMSPs can retrieve the map of a certain area.\T\B\\
     \hline
-    \textbf{D\row} & There exists an API endpoint on eMall where the CPMS can retrieve a list of all eMSPs.\T\B\\
+    \textbf{D\row} & There exists an API endpoint on eMall where CPMSs can retrieve a list of all eMSPs.\T\B\\
     \hline
-    \textbf{D\row} & There exists an API endpoint on eMall where the CPMS can confirm the credentials inserted by the CPO \T\B \\
+    \textbf{D\row} & There exists an API endpoint on eMall where CPMSs can confirm the credentials inserted by the CPO.\T\B \\
     \hline
     \caption{Domain Assumptions}
     \setcounter{row}{0}
