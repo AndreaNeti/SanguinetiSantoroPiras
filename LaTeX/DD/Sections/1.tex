@@ -1,0 +1,266 @@
+\newcounter{row}
+\newcommand\row{\stepcounter{row}\arabic{row}}
+\chapter{INTRODUCTION}
+\label{ch:introduction}%
+% The \label{...}% enables to remove the small indentation that is generated, always leave the % symbol.
+\section{Purpose}
+Electric vehicles are the key technology to reduce the environmental impact of road transport, a sector that accounts for 16\% of global emissions. Recent years have seen exponential growth in the sale of electric vehicles together with improved range, wider model availability and increased performance. \\ \\
+This trend is projected to continue in the future, and for this reason more charging stations are being built each year, in order to satisfy the increasing demand for energy for these electric vehicles. \\ \\
+In this context, it is fundamental that the communication between the charging stations and the drivers is managed in such a way that it introduces minimal interference and constraints on 
+our daily schedule. \\ \\
+eMall is going to be a platform that permits the aforementioned communication through its subsystems eMSP (e-Mobility Service Provider), which is the app used by some users, like drivers, and the CPMS (Charge Point Management System), used by the owner of the charging stations or also called Charging Point Operator (CPO). \\ \\
+Our main goal is to develop both subsystems and in particular, describe how the eMSPs can communicate with different CPMSs. Through an eMSP, drivers can easily choose where to charge their vehicles and easily book the charging process and pay for it. On the other hand, CPOs can use their CPMS to manage their charging stations, in order to improve and speed up the energy management and the charging process.
+\label{sec:purpose}
+\newpage
+\section{Scope}
+\label{sec:scope}
+The eMall platform objective is the integration between two subsystems: the eMSP and the CPMS. \\
+Even though the eMSPs could be handled directly by third-party providers, in this project both subsystems are managed by eMall. \\ 
+In this project, only the subsystems are described, since eMall is considered an already implemented service accessible via web and therefore only mentioned if the actors or the subsystems interact with it.
+Among the several stakeholders to consider, this document concerns only drivers and CPOs. Occasionally DSOs (Distribution System Operators) are mentioned, but they should not be considered part of the project scope since they do not use the platform and are therefore external entities. \\
+
+\section{Definitions, Acronyms, Abbreviations}
+\label{sec:definitionsAcronymsAbbreviations}
+\subsection{Definitions} %AP
+\label{subsec:definitions}
+\begin{table}[H]
+\centering 
+    \begin{tabular}{| p{0.125\linewidth} | p{0.80\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+     \textbf{Definition} & \textbf{Description} \T\B \\
+    \hline \hline
+    \textbf{Energy Provider} & The entity providing energy to the charging station, it can either be a DSO or the internal batteries of that charging station.\T\B\\
+    \hline
+    \textbf{Driver} & The person that will use the eMSP application. For shortening reasons, only male pronouns are used to address the driver. \T\B\\
+    \hline
+    \textbf{Charging Point Operator} & The legal owner of charging stations that will use the CPMS. For shortening reasons, only male pronouns are used to address the driver. \T\B\\
+    \hline
+    \textbf{Charging Station} & Physical place managed by a CPO where drivers can charge their vehicle. It has one or more charging sockets. When a charging station is "available, " one of its sockets is available. \T\B\\
+    \hline
+    \textbf{Charging Socket} & Plug where drivers connect their vehicle to charge it. It can support different charging types. When a charging socket is "available" it means that it has no booked charging process  or no one is connected to it.\T\B\\
+    \hline
+    %\textbf{Maximum Amount Of Time} & The maximum amount of time a Driver can book a charge before the arrival time. It is needed to avoid a charging socket being occupied for a long time without being used. This variable can be decided when implementing the system \T\B\\
+    %\hline
+    \textbf{Charging Type} & It defines the speed of the charging process.\T\B\\
+    \hline
+    \textbf{User} & Either the CPO or the Driver.\T\B\\
+    \hline
+    
+    \end{tabular}
+    \\[10pt]
+    \caption{Definitions}
+\end{table}
+
+\subsection{Acronyms} %AS
+\label{subsec:acronyms}
+\begin{table}[H]
+\centering 
+    \begin{tabular}{| p{0.175\linewidth} | p{0.6\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+     \textbf{Acronyms} & \textbf{Description} \T\B \\
+    \hline \hline
+    \textbf{eMall} & e-Mobility for All\T\B\\
+    \hline
+    \textbf{eMSP} & e-Mobility Service Provider\T\B\\
+    \hline
+    \textbf{CPO} & Charging Point Operator\T\B\\
+    \hline
+    \textbf{CPMS} & Charge Point Management System\T\B\\
+    \hline
+    \textbf{DSO} & Distribution System Operator\T\B\\
+    \hline
+    \textbf{FRE} & Functional REquirement\T\B\\
+    \hline    
+    %\textbf{NFRE} & Non-Functional REquirement\T\B\\
+    %\hline
+    \textbf{RASD} & Requirements Analysis and Specification Document\T\B\\
+    \hline
+    %\textbf{W.C.} &  World Controlled\T\B\\
+    %\hline
+    %\textbf{M.C.} &  Machine Controlled\T\B\\
+   % \hline
+    \textbf{ID} & IDentifier\T\B\\
+    \hline
+    \textbf{API} & Application Programming Interface\T\B\\
+    \hline
+    \end{tabular}
+    \\[10pt]
+    \caption{Acronyms}
+\end{table}
+\subsection{Abbreviations} %AS
+\label{subsec:abbreviations}
+\begin{table}[H]
+\centering 
+    \begin{tabular}{| p{0.2\linewidth} | p{0.4\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+     \textbf{Abbreviation} & \textbf{Description} \T\B \\
+    \hline \hline
+    \textbf{Gx} & Goal number $X$\T\B\\
+    \hline
+   % \textbf{WPx} &  World Phenomenon number $X$\T\B\\
+   % \hline
+ %   \textbf{SPx} &  Shared Phenomenon number $X$\T\B\\
+  %  \hline
+  %  \textbf{Dx} & Domain Assumption number $X$ \T\B\\
+ %   \hline
+    \textbf{FREx} & Functional Requirement number $X$\T\B\\
+    \hline
+    %\textbf{NFREx} & Non-Functional Requirement number $X$ \T\B\\
+    %\hline
+    %\textbf{Ux} & Use Case number $X$ \T\B\\
+    %\hline
+    \textbf{opt} & Optional \T\B\\
+    \hline
+    \textbf{alt} & Alternative  \T\B\\
+    \hline       
+    \textbf{par} & Parallel \T\B\\
+    \hline   
+    \end{tabular}
+    \\[10pt]
+    \caption{Abbreviations}
+\end{table}
+\newpage
+\section{Document Structure}
+\label{sec:documentStructure}
+\paragraph{Section 1}
+This section contains the scope the purpose of the DD
+document. This chapter also includes the structure of the document and a set of abbreviations, acronyms and definitions used.
+\paragraph{Section 2}
+This section contains the architectural design choices, there are an overview of the designed architecture, all the components,
+the interfaces, and the technologies used for the design of the application. This chapter also includes the functions of the interfaces and the processes in which they are utilized, highlighting the interaction between them. At the end there is an explanation of the design pattern chosen to develop the application and any other design decisions.
+\paragraph{Section 3}
+This section contains a representation of how the User Interfaces should look like. It completes the User Interfaces subsection present inside the RASD.
+\paragraph{Section 4}
+This section contains a description of how the requirements defined in the RASD map to the design elements described in this document in order to satisfy the goals, which are defined in the RASD as well.
+\paragraph{Section 5}
+This section contains the plan which describes how to implement the subcomponents of the systems and in which order. In addiction to this there is also the test planning for the two systems.
+\paragraph{Section 6}
+In this section is showed how much time every student spent while working at this document.
+\paragraph{Section 7}
+This section is made in order to point out all the references and tools used during the creation of this document.System Operators) are mentioned, but they should not be considered part of the project scope since they do not use the platform and are therefore external entities. \\
+
+\section{Definitions, Acronyms, Abbreviations}
+\label{sec:definitionsAcronymsAbbreviations}
+\subsection{Definitions} %AP
+\label{subsec:definitions}
+\begin{table}[H]
+\centering 
+    \begin{tabular}{| p{0.125\linewidth} | p{0.80\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+     \textbf{Definition} & \textbf{Description} \T\B \\
+    \hline \hline
+    \textbf{Energy Provider} & The entity providing energy to the charging station, it can either be a DSO or the internal batteries of that charging station.\T\B\\
+    \hline
+    \textbf{Driver} & The person that will use the eMSP application. For shortening reasons, only male pronouns are used to address the driver. \T\B\\
+    \hline
+    \textbf{Charging Point Operator} & The legal owner of charging stations that will use the CPMS. For shortening reasons, only male pronouns are used to address the driver. \T\B\\
+    \hline
+    \textbf{Charging Station} & Physical place managed by a CPO where drivers can charge their vehicle. It has one or more charging sockets. When a charging station is "available, " one of its sockets is available. \T\B\\
+    \hline
+    \textbf{Charging Socket} & Plug where drivers connect their vehicle to charge it. It can support different charging types. When a charging socket is "available" it means that it has no booked charging process  or no one is connected to it.\T\B\\
+    \hline
+    %\textbf{Maximum Amount Of Time} & The maximum amount of time a Driver can book a charge before the arrival time. It is needed to avoid a charging socket being occupied for a long time without being used. This variable can be decided when implementing the system \T\B\\
+    %\hline
+    \textbf{Charging Type} & It defines the speed of the charging process.\T\B\\
+    \hline
+    \textbf{User} & Either the CPO or the Driver.\T\B\\
+    \hline
+    
+    \end{tabular}
+    \\[10pt]
+    \caption{Definitions}
+\end{table}
+
+\subsection{Acronyms} %AS
+\label{subsec:acronyms}
+\begin{table}[H]
+\centering 
+    \begin{tabular}{| p{0.175\linewidth} | p{0.6\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+     \textbf{Acronyms} & \textbf{Description} \T\B \\
+    \hline \hline
+    \textbf{eMall} & e-Mobility for All\T\B\\
+    \hline
+    \textbf{eMSP} & e-Mobility Service Provider\T\B\\
+    \hline
+    \textbf{CPO} & Charging Point Operator\T\B\\
+    \hline
+    \textbf{CPMS} & Charge Point Management System\T\B\\
+    \hline
+    \textbf{DSO} & Distribution System Operator\T\B\\
+    \hline
+    \textbf{FRE} & Functional REquirement\T\B\\
+    \hline    
+    %\textbf{NFRE} & Non-Functional REquirement\T\B\\
+    %\hline
+    \textbf{RASD} & Requirements Analysis and Specification Document\T\B\\
+    \hline
+    %\textbf{W.C.} &  World Controlled\T\B\\
+    %\hline
+    %\textbf{M.C.} &  Machine Controlled\T\B\\
+   % \hline
+    \textbf{ID} & IDentifier\T\B\\
+    \hline
+    \textbf{API} & Application Programming Interface\T\B\\
+    \hline
+    \end{tabular}
+    \\[10pt]
+    \caption{Acronyms}
+\end{table}
+\subsection{Abbreviations} %AS
+\label{subsec:abbreviations}
+\begin{table}[H]
+\centering 
+    \begin{tabular}{| p{0.2\linewidth} | p{0.4\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+     \textbf{Abbreviation} & \textbf{Description} \T\B \\
+    \hline \hline
+    \textbf{Gx} & Goal number $X$\T\B\\
+    \hline
+   % \textbf{WPx} &  World Phenomenon number $X$\T\B\\
+   % \hline
+ %   \textbf{SPx} &  Shared Phenomenon number $X$\T\B\\
+  %  \hline
+  %  \textbf{Dx} & Domain Assumption number $X$ \T\B\\
+ %   \hline
+    \textbf{FREx} & Functional Requirement number $X$\T\B\\
+    \hline
+    %\textbf{NFREx} & Non-Functional Requirement number $X$ \T\B\\
+    %\hline
+    %\textbf{Ux} & Use Case number $X$ \T\B\\
+    %\hline
+    \textbf{opt} & Optional \T\B\\
+    \hline
+    \textbf{alt} & Alternative  \T\B\\
+    \hline       
+    \textbf{par} & Parallel \T\B\\
+    \hline   
+    \end{tabular}
+    \\[10pt]
+    \caption{Abbreviations}
+\end{table}
+\newpage
+\section{Document Structure}
+\label{sec:documentStructure}
+\paragraph{Section 1}
+This section contains the scope the purpose of the DD
+document. This chapter also includes the structure of the document and a set of abbreviations, acronyms and definitions used.
+\paragraph{Section 2}
+This section contains the architectural design choices, there are an overview of the designed architecture, all the components,
+the interfaces, and the technologies used for the design of the application. This chapter also includes the functions of the interfaces and the processes in which they are utilized, highlighting the interaction between them. At the end there is an explanation of the design pattern chosen to develop the application and any other design decisions.
+\paragraph{Section 3}
+This section contains a representation of how the User Interfaces should look like. It completes the User Interfaces subsection present inside the RASD.
+\paragraph{Section 4}
+This section contains a description of how the requirements defined in the RASD map to the design elements described in this document in order to satisfy the goals, which are defined in the RASD as well.
+\paragraph{Section 5}
+This section contains the plan which describes how to implement the subcomponents of the systems and in which order. In addiction to this there is also the test planning for the two systems.
+\paragraph{Section 6}
+In this section is showed how much time every student spent while working at this document.
+\paragraph{Section 7}
+This section is made in order to point out all the references and tools used during the creation of this document.

@@ -1,0 +1,326 @@
+\chapter{REQUIREMENTS TRACEABILITY}
+\label{ch:requirementsTraceability}%
+\begin{comment}
+%Same mapping tables as the RASD but add components instead of domain assuptions
+{\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth}|}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G1} & \textbf{Allow Drivers to check nearby charging stations and see info about their prices, special offers and availability.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE1 & An Unregistered Driver shall be able to register himself on the eMSP application. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE2 & The Driver shall be able to login to the eMSP with his credentials. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE3 & The system shall notify the Driver if there is no internet connection. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE4 & The Driver shall be able to see the location of all the charging stations in a certain geographic area. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE5 & The Driver shall be able to select the charging types he is interested in while searching for a charging station in order to filter them. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE6 & The Driver shall be able to check the cost per kWh for the specified charging types in a specific charging station. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE7 & The Driver shall be able to see which charging stations are currently available for the specified charging types. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE8 & The Driver shall be able to see an estimated time in which a specific charging station will become available. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE22 & If the vehicle is connected, the system shall be able to retrieve the Driver’s vehicle location \\
+    \hline  
+    \rowcolor{bluepoli!15}
+    FRE45 &The system shall allow the CPO to apply discounts for the energy prices of a managed charging station until a set expiration date. \\
+    \hline
+    \rowcolor{bluepoli!15}
+    FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE47 & The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
+    \hline
+    \rowcolor{bluepoli!15} FRE55 & If CPMS can calculate the estimated time before each charging type becomes available, CPMS updates the availability of a charging station with the estimated time otherwise, CPMS updates only the availability. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE56 & CPMS updates the price of a charging type in a station. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE57 & CPMS updates the offer of a charging type in a station \\
+    \hline  
+     \rowcolor{bluepoli!15}
+     FRE58 & CPMS update about the data of the newly created charging station such as location, prices, and supported charging types. \\
+     \hline
+  % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline    
+\end{longtable}}
+{\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth}|}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G2} & \textbf{Allow Drivers to create and delete bookings for charging their vehicle in a charging station.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE1 & An Unregistered Driver shall be able to register himself on the eMSP application. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE2 & The Driver shall be able to login to the eMSP with his credentials. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE3 & The system shall notify the Driver if there is no internet connection. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE4 & The Driver shall be able to see the location of all the charging stations in a certain geographic area. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE5 & The Driver shall be able to select the charging types he is interested in while searching for a charging station in order to filter them. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE7 & The Driver shall be able to see which charging stations are currently available for the specified charging types. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE8 & The Driver shall be able to see an estimated time in which a specific charging station will become available. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE9 & The Driver shall be able to book a charging socket in an available charging station, from 0 up to a max specified amount of time before.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE10 & The system shall show the Driver the booked socket ID number. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE11 &  The Driver shall be able to delete a booked charging process before its starting time.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE12 & The Driver shall receive a notification that confirms the booking went well. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
+    \hline
+    \rowcolor{bluepoli!15}
+    FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE47 &  The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
+    \hline
+    \rowcolor{bluepoli!15} FRE48 & The eMSP shall be able to book a charge and receive the booked charging socket on a single CPMS \\
+    \hline
+    \rowcolor{bluepoli!15} FRE49 & The eMSP shall be able to delete a previously booked charge on a single CPMS\\
+    \hline
+    \rowcolor{bluepoli!15} FRE55 & If CPMS can calculate the estimated time before each charging type becomes available, CPMS updates the availability of a charging station with the estimated time, otherwise CPMS updates only the availability. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE58 & CPMS updates about the data of the newly createdc harging station such as location, prices, supported charging type. \\
+    \hline
+   % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline    
+\end{longtable}}
+{\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G3} & \textbf{Allow Drivers to manage and monitor their charging process.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE1 & An Unregistered Driver shall be able to register himself on the eMSP application. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE2 & The Driver shall be able to login to the eMSP with his credentials. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE3 & The system shall notify the Driver if there is no internet connection. \\
+    \hline 
+    \rowcolor{bluepoli!15}
+    FRE10\textbf &The system shall show the Driver the booked socket ID number\\
+    \hline
+    \rowcolor{bluepoli!15} FRE13 & As soon as the booked time starts the Driver shall be able to start the recharging process. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE14 & During the recharging process the Driver shall be able to stop it in advance. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE15 & The Driver shall be able to check the estimated remaining time until the end of the charging process. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE16 & The system shall notify the Driver when the charging process is complete. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE36 & The system shall be able to give an estimation about how much time is needed to end the charging process for a particular vehicle being charged in a charging station. \\
+    \hline
+    \rowcolor{bluepoli!15}
+    FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE47 &  The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
+    \hline
+    \rowcolor{bluepoli!15} FRE50 & The eMSP shall be able to start a charge on a singleCPMS. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE51 & The eMSP shall be notified when the vehicle is not well connected to the charging socket on a single CPMS \\
+    \hline
+    \rowcolor{bluepoli!15} FRE52 & The eMSP shall be able to stop a charge on a single CPMS. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE53 &  The eMSP shall be notified with the required amount of money to pay when the charging process ends on a single CPMS .\\
+    \hline
+    \rowcolor{bluepoli!15} FRE54 & The eMSP shall be able to ask for the estimated ending time for a specific charging process. \\
+    \hline
+    % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline  
+\end{longtable}}
+{\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G4} & \textbf{Allow Drivers to pay CPOs for the charging process provided.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE1 & An Unregistered Driver shall be able to register himself on the eMSP application. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE2 & The Driver shall be able to login to the eMSP with his credentials. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE3 & The system shall notify the Driver if there is no internet connection. \\
+    \hline 
+    \rowcolor{bluepoli!15} FRE17 & At the end of the charging process, the system shall handle the payment between the Driver and the CPO through an external API. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE19 & The system shall notify the Driver when a successful payment occurs. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE40& The CPO shall be able to select the revenue percentage amount from the energy sale of each charging station. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE42 & The system shall be able, for each charging station, to automatically calculate the selling price of the energy based on the revenue criteria and on the price of the energy provider. \\
+    \hline
+    \rowcolor{bluepoli!15}
+    FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE47 &  The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
+    \hline
+    \rowcolor{bluepoli!15} FRE53 &  The eMSP shall be notified with the required amount of money to pay when the charging process ends on a single CPMS .\\
+    \hline
+    % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline  
+\end{longtable}}
+{\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G5} & \textbf{Proactively suggest to the Drivers where to go to charge their vehicle.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE20 & The system shall be able to check if there exists a connection between the Driver's vehicle and the system itself. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE21 &If the vehicle is connected, the system shall be able to retrieve the battery level of the Driver's vehicle. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE22 & If the vehicle is connected, the system shall be able to retrieve the Driver's vehicle location. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE23 & The Driver shall be able to authorize the system to access his personal data such as his calendar, navigation system and location. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE24 & The system shall be able to retrieve data from the Driver's personal calendar. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE25 & The system shall retrieve information about the Driver’s navigation system. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE26 & If the vehicle is connected to the Driver's device, the eMSP shall create charging suggestion notifications based on the status of the vehicle's battery, the Driver's schedule (his calendar and navigation system), special offers made available at some charging stations and the availability of charging sockets at those identified charging stations. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE27 & 
+    The system shall advise the Driver with a notification when and where he should recharge his vehicle’s battery.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE28 & The Driver shall be able to click on the charging suggestion notification sent by the eMSP and that shall redirect to the suggested charging station's info page. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE45 &The system shall allow the CPO to apply discounts for the energy prices of a managed charging station until a set expiration date.\\
+    \hline
+    \rowcolor{bluepoli!15}
+    FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE47 &  The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
+    \hline
+    \rowcolor{bluepoli!15} FRE55 & If CPMS can calculate the estimated time before each charging type becomes available, CPMS updates the availability of a charging station with the estimated time, otherwise CPMS updates only the availability. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE56 & CPMS updates the price of a charging type in a station. \\
+    \hline  
+    \rowcolor{bluepoli!15} FRE57 & CPMS updates the offer of a charging type in a station. \\
+    \hline  
+     \rowcolor{bluepoli!15}
+     FRE58 & CPMS update about the data of the newly created charging station such as location, prices, supported charging types.\\
+     \hline
+    % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline  
+\end{longtable}}
+{\renewcommand{\arraystretch}{1.5}
+%MAPPING GOAL 6
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G6} & \textbf{Allow CPOs to manage the charging prices and the criteria of energy acquisition in their charging stations.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE29 & The CPO shall be able to login to the CPMS with his credentials. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE30 & The system shall notify the CPO if there is no internet connection. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE31 & The CPO shall be able to see the list of only all his owned charging stations. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE32 & The CPO shall be able to add a new charging station. \\
+    \hline
+    \rowcolor{bluepoli!15} FRE37 & The system shall be able to retrieve the current energy price and the capacity for each of the available DSOs. \\
+    \hline
+     \rowcolor{bluepoli!15} FRE38 & The system shall be able to use the batteries as energy providers with prices equal to the cost that was used to recharge them. \\
+    \hline
+     \rowcolor{bluepoli!15} FRE39& The CPO shall be able to select the criteria that will be used by the CPMS in order to acquire energy, such as Energy provider with the lowest price, Energy Provider with biggest energy capacity.\\
+     \rowcolor{bluepoli!15} FRE40 & The CPO shall be able to select the revenue percentage amount from the energy sale of each charging station.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE41 & The system shall be able, for each charging station, to automatically decide from which energy provider to retrieve the energy from, based on the criteria chosen by the CPO.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE42 & The system shall be able, for each charging station, to automatically calculate the selling price of the energy based on the revenue criteria and on the price of the energy provider.\\
+    \hline 
+    \rowcolor{bluepoli!15} FRE44 &  The system shall be able to automatically decide whether to store or not energy in the internal batteries, if available, of one of the managed charging stations.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE45 &  The system shall allow the CPO to apply discounts for the energy prices of a managed charging station until a set expiration date.\\
+    \hline
+    % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline  
+\end{longtable}}
+% MAPPING GOAL 7
+\begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth}|}
+    \hline
+    % Goal
+    \rowcolor{bluepoli!40}\textbf{G7} & \textbf{Allow CPOs to connect to all their charging stations and monitor them.} \\
+    \hline
+    % Requirements
+    \rowcolor{bluepoli!15} FRE29 & The CPO shall be able to login to the CPMS with his credentials.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE30 &  The system shall notify the CPO if there is no internet connection.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE31 & The CPO shall be able to see the list of only all his owned charging stations.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE32& The CPO shall be able to add a new charging station.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE33 & The CPO shall be able to check the remaining energy stored in the batteries in one of his own charging stations.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE34& The CPO shall be able to check the number of vehicles being charged in one of his charging stations.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE35& The CPO shall be able to check the amount of power absorbed from each vehicle being charged in one of his charging stations.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE36& The system shall be able to give an estimation about how much time is needed to end the charging process for a particular vehicle being charged in a charging station.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE50 & The eMSP shall be able to start a charge on a single CPMS.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE52 & The eMSP shall be able to stop a charge on a single CPMS.\\
+    \hline
+    \rowcolor{bluepoli!15} FRE54& The eMSP shall be able to ask for the estimated ending time for a specific charging process.\\
+    \hline
+    % Design components
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline   
+    \rowcolor{bluepoli!5} & \textbf{} \\
+    \hline  
+\end{longtable}
+\end{comment}
