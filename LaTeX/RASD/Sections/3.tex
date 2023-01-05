@@ -8,17 +8,17 @@
 \subsection{User Interfaces}
 \label{subsec:userInterfaces}
 The following mockups are presented here just to show an idea of the application
-that will be in use by the Drivers and the one available to the CPOs. In Figure \ref{fig:map} and \ref{fig:book} are shown some of the functionalities available to the eMSP, such as the Map and the charging station availability. On the other hand, by figure \ref{fig:CPMS} it's possible to see the list of the CPO's managed charging stations, as well as the eMSP association functionality. The complete list of mockups (mobile app for eMSP and application for CMPS) will be available in the design document.
+that will be in use by the Drivers and the one available to the CPOs. In Figure \ref{fig:map} and \ref{fig:book} are shown some of the functionalities available through the eMSP, such as the map and the charging station info. On the other hand, by figure \ref{fig:CPMS} it's possible to see the list of the CPO's managed charging stations, as well as the eMSP association functionality. The complete list of mockups (mobile app for eMSP and application for CMPS) will be available in the design document.
 \begin{figure}[H]
     \begin{minipage}[t]{.35\textwidth} % not "0.5\textwidth"
-    \includegraphics[width=\textwidth]{Mock/map}
-    \caption{Map Mockup}
+    \includegraphics[width=\textwidth]{Mock/Map}
+    \caption{Map}
     \label{fig:map}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{.35\textwidth}
-    \includegraphics[width=\textwidth]{Mock/book}
-    \caption{Booking Mockup}
+    \includegraphics[width=\textwidth]{Mock/StationInfo}
+    \caption{Station Info}
     \label{fig:book}
 \end{minipage}
 \end{figure}
@@ -127,7 +127,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \textbf{Event Flow} &     
         \begin{enumerate}
             \item The Unregistered Driver press the "Register" button
-            \item The Unregistered Driver enters name, birth, date, email address and password
+            \item The Unregistered Driver enters the username, password, birth date, email address and a payment method
             \item The Unregistered Driver submits the compiled form
             \item The eMSP processes the request and shows a success message
         \end{enumerate}\T\B\\
@@ -147,21 +147,21 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \textbf{Use Case \case} & \textbf{Driver Login} \T\B \\
         \hline 
         \hline
-        \textbf{Actor(s)} & Registered Driver \T\B\\
+        \textbf{Actor(s)} & Driver \T\B\\
         \hline
-        \textbf{Entry Condition} & Driver is not logged in and on the eMSP main page \T\B\\ 
+        \textbf{Entry Condition} & Driver not logged in and on the eMSP main page \T\B\\ 
         \hline
         \textbf{Event Flow} &     
         \begin{enumerate}
             \item The Driver press the "Login" button
-            \item The Driver submits his credentials such as email and password 
+            \item The Driver submits his credentials such as username and password 
             \item The eMSP validates his credentials and shows a success message
         \end{enumerate}\T\B\\
         \hline
-        \textbf{Exit Condition} & The driver is logged into the eMSP\T\B\\
+        \textbf{Exit Condition} & The Driver is logged into the eMSP\T\B\\
         \hline
         \textbf{Exception} & 
-         Users enters invalid credentials. The exception is notified to the Driver. \T\B\\
+         The Driver enters invalid credentials. The exception is notified to the Driver. \T\B\\
         \hline
     \end{tabular}
     \end{table}
@@ -213,7 +213,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
             \item The Driver sees the received info
         \end{enumerate}\T\B\\
         \hline
-        \textbf{Exit Condition} & Info of the stations are correctly shown to the Driver. \T\B\\
+        \textbf{Exit Condition} & Info of the selected station is correctly shown to the Driver. \T\B\\
         \hline
         \textbf{Exception} & None \T\B\\
         \hline
@@ -235,7 +235,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \hline
         \textbf{Event Flow} &     
         \begin{enumerate}
-            \item The Driver clicks on the "Book charge" button
+            \item The Driver clicks on the "Book Charge" button
             \item The Driver selects the arrival time
             \item The Driver clicks on "Submit" and sends the request
             \item The eMSP notifies the user that he has successfully booked a charge and the ID of the charging socket
@@ -291,7 +291,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \begin{enumerate}     
             \item The Driver clicks on the Booked Charge button and checks the socket ID he has booked   
             \item The Driver plugs his vehicle to the socket with the ID booked
-            \item The Driver clicks on the "Start charge" button
+            \item The Driver clicks on the "Start Charge" button
             \item The eMSP processes the request and notifies the user that the charging process has been started
             \item The Driver sees the estimated time for the charge to end
         \end{enumerate}\T\B\\
@@ -454,7 +454,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \hline
         \textbf{Event Flow} &     
         \begin{enumerate}
-            \item The CPO clicks on the "Set a new offer" button.
+            \item The CPO clicks on the "Set New Offer" button.
             %\item The CPO selects one or more of the managed charging stations.
             %\item The CPO clicks on the "Next" button.
             \item The CPO selects the amount of discount for each of the charging types wanted.
@@ -485,7 +485,7 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
         \hline
         \textbf{Event Flow} &     
         \begin{enumerate}
-            \item The CPO clicks on the "Update energy criteria" button.
+            \item The CPO clicks on the "Energy criteria" button.
             \item (opt) The CPO modifies the energy sale percentage revenue.
             \item (opt) The CPO modifies the energy acquisition criteria.
             \item The CPO clicks the "Update" button.
@@ -545,15 +545,15 @@ The systems, both the eMSP and the CPMS, communicate with external APIs in order
             \item The CPO clicks on the "Add charging station" button.
             \item The CPMS shows a list of detected charging stations.
             \item The CPO connects the new charging station to one of the available stations from the list.           
-            \item The CPO inserts the new charging station information e.g. name, location and number of sockets.
+            \item The CPO inserts the new charging station data e.g. name, location and supported charging types.
             \item The CPO clicks the "Submit" button.
-            \item The CPMS processes the information and shows a success message.
+            \item The CPMS processes the request and shows a success message.
             \item The CPMS shows the energy criteria page of the new charging station.
         \end{enumerate}\T\B\\
         \hline
         \textbf{Exit Condition} & The charging station has been correctly added and the system is showing the energy criteria page of that station. \T\B\\
         \hline
-        \textbf{Exception} & The new station information is invalid. The exception is notified to the CPO. \T\B\\
+        \textbf{Exception} & The new station data is invalid. The exception is notified to the CPO. \T\B\\
         \hline
         \end{tabular}
         \end{table}  
@@ -845,9 +845,9 @@ In this section, the requirements for the two subsystems will be described as al
     \hline
     \textbf{FRE\row} & Special Offers  & The system shall allow the CPO to apply discounts for the energy prices of a managed charging station until a set expiration date.\T\B\\
     \hline
-    \textbf{FRE\row} & eMSP list & The CPO shall be able to see a list of all the existing eMSPs.\T\B\\
+    \textbf{FRE\row} & eMSP List & The CPO shall be able to see a list of all the existing eMSPs.\T\B\\
     \hline
-    \textbf{FRE\row}& eMSP association & The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems. \T\B\\
+    \textbf{FRE\row}& eMSP Association & The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems. \T\B\\
     \hline
     \caption{Table of CPMS Requirements}
 \end{longtable}
@@ -861,7 +861,7 @@ Here there is the description of the requirements that are in common between the
     \end{itemize}
     \item \textbf{Format 2}: CPMS updates "data":
     \begin{itemize}
-        \item The CPMS shall detect when some "data" are updated.
+        \item The CPMS shall detect when some "data" is updated.
         \item The CPMS shall send to every associated eMSP the new updated "data".
         \item The eMSP shall store the "data" received by the CMPS and show it to the driver when he requests it.
     \end{itemize}
@@ -1065,6 +1065,7 @@ Here there is the description of the requirements that are in common between the
     \hline
     \textbf{D\row} & & & & & &X &X\T\B\\
     \hline
+    \caption{Mapping of Domain Assumptions on Goals}    
 \end{longtable}
 \subsection{Explicit Goal Mapping}
 % TEIBOL per l'explicit mapping
