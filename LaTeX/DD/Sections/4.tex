@@ -1,7 +1,6 @@
 \chapter{REQUIREMENTS TRACEABILITY}
 \label{ch:requirementsTraceability}%
-\begin{comment}
-%Same mapping tables as the RASD but add components instead of domain assuptions
+\section{Explicit Mapping On Goals}
 {\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth}|}
     \hline
@@ -46,13 +45,40 @@
      \rowcolor{bluepoli!15}
      FRE58 & CPMS update about the data of the newly created charging station such as location, prices, and supported charging types. \\
      \hline
-  % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    \rowcolor{bluepoli!5}  & Mobile Application  \newline
+    \begin{itemize}
+        \item Map Loader
+        \item View
+        \item Communication Handler
+        \item Vehicle Communication
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline    
+    \rowcolor{bluepoli!5}  & eMSP  \newline
+    \begin{itemize}
+        \item Requests Handler
+        \item Login
+        \item Registration
+        \item Authentication Middleware
+        \item Communication
+        Handler
+        \item Map
+        \item Station Updates
+        \item eMSP Model
+    \end{itemize} \\
+    \hline
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item Station Updates
+        \item CPMS Model
+        \item View
+        \item Authentication Middleware
+        \item eMall API Handler
+        \item eMSP Association
+        \item Station Updates
+        \item CPMS Model
+    \end{itemize} \\
+    \hline
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth}|}
@@ -96,16 +122,46 @@
     \hline
     \rowcolor{bluepoli!15} FRE55 & If CPMS can calculate the estimated time before each charging type becomes available, CPMS updates the availability of a charging station with the estimated time, otherwise CPMS updates only the availability. \\
     \hline
-    \rowcolor{bluepoli!15} FRE58 & CPMS updates about the data of the newly createdc harging station such as location, prices, supported charging type. \\
+    \rowcolor{bluepoli!15} FRE58 & CPMS updates about the data of the newly created charging station such as location, prices, supported charging type. \\
     \hline
-   % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    \rowcolor{bluepoli!5}  & Mobile Application  \newline
+    \begin{itemize}
+        \item Map Loader
+        \item View
+        \item Communication Handler
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline    
+    \rowcolor{bluepoli!5}  & eMSP  \newline
+    \begin{itemize}
+        \item Requests Handler
+        \item Login
+        \item Registration
+        \item Communication
+        Handler
+        \item Authentication Middleware
+        \item Map
+        \item Manage Booking
+        \item External Operation Controller
+        \item Station Updates
+        \item eMSP Model
+    \end{itemize} \\
+    \hline
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item Station Updates
+        \item View
+        \item Authentication Middleware
+        \item eMall API Handler
+        \item eMSP Association
+        \item Station Updates
+        \item Remote Operation Receiver
+        \item Booking
+        \item CPMS Model
+    \end{itemize} \\
+    \hline
 \end{longtable}}
+\newpage
 {\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
     \hline
@@ -149,13 +205,44 @@
     \hline
     \rowcolor{bluepoli!15} FRE54 & The eMSP shall be able to ask for the estimated ending time for a specific charging process. \\
     \hline
-    % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    \rowcolor{bluepoli!5}  & Mobile Application  \newline
+    \begin{itemize}
+        \item View
+        \item Communication Handler
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline  
+    \rowcolor{bluepoli!5}  & eMSP  \newline
+    \begin{itemize}
+        \item Requests Handler
+        \item Login
+        \item Registration
+        \item Communication
+        Handler
+        \item Authentication Middleware
+        \item Map
+        \item Booking
+        \item Charging Process
+        \item External Operation Controller
+        \item Station Updates
+        \item eMSP Model
+    \end{itemize} \\
+    \hline
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item Station Updates
+        \item View
+        \item Authentication Middleware
+        \item eMall API Handler
+        \item eMSP Association
+        \item Station Updates
+        \item Remote Operation Receiver
+        \item Booking
+        \item Charging Process
+        \item Payment Calculation
+        \item CPMS Model
+    \end{itemize} \\
+    \hline
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
@@ -177,6 +264,7 @@
     \rowcolor{bluepoli!15} FRE19 & The system shall notify the Driver when a successful payment occurs. \\
     \hline
     \rowcolor{bluepoli!15} FRE40& The CPO shall be able to select the revenue percentage amount from the energy sale of each charging station. \\
+    
     \hline
     \rowcolor{bluepoli!15} FRE42 & The system shall be able, for each charging station, to automatically calculate the selling price of the energy based on the revenue criteria and on the price of the energy provider. \\
     \hline
@@ -187,13 +275,36 @@
     \hline
     \rowcolor{bluepoli!15} FRE53 &  The eMSP shall be notified with the required amount of money to pay when the charging process ends on a single CPMS .\\
     \hline
-    % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    \rowcolor{bluepoli!5}  & Mobile Application  \newline
+    \begin{itemize}
+        \item View
+        \item Communication Handler
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline  
+    \rowcolor{bluepoli!5}  & eMSP  \newline
+    \begin{itemize}
+        \item Requests Handler
+        \item Login
+        \item Registration
+        \item Charging Process
+        \item Payment
+        \item Station Updates
+        \item eMSP Model
+    \end{itemize} \\
+    \hline
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item View
+        \item Authentication Middleware
+        \item eMall API Handler
+        \item eMSP Association
+        \item Station Updates
+        \item Charging Process
+        \item Payment Calculation
+        \item CPMS Model
+    \end{itemize} \\
+    \hline
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth} |}
@@ -239,13 +350,34 @@
      \rowcolor{bluepoli!15}
      FRE58 & CPMS update about the data of the newly created charging station such as location, prices, supported charging types.\\
      \hline
-    % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    \rowcolor{bluepoli!5}  & Mobile Application  \newline
+    \begin{itemize}
+        \item View
+        \item Communication Handler
+        \item Vehicle Communication
+        \item Suggestion Generator 
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline  
+    \rowcolor{bluepoli!5}  & eMSP  \newline
+    \begin{itemize}
+        \item Requests Handler
+        \item Authentication Middleware
+        \item Map
+        \item eMSP Model
+    \end{itemize} \\
+    \hline
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item View
+        \item Authentication Middleware
+        \item eMall API Handler
+        \item eMSP Association
+        \item Station Updates
+        \item Set Offer
+        \item CPMS Model
+    \end{itemize} \\
+    \hline
 \end{longtable}}
 {\renewcommand{\arraystretch}{1.5}
 %MAPPING GOAL 6
@@ -268,6 +400,7 @@
      \rowcolor{bluepoli!15} FRE38 & The system shall be able to use the batteries as energy providers with prices equal to the cost that was used to recharge them. \\
     \hline
      \rowcolor{bluepoli!15} FRE39& The CPO shall be able to select the criteria that will be used by the CPMS in order to acquire energy, such as Energy provider with the lowest price, Energy Provider with biggest energy capacity.\\
+     \hline
      \rowcolor{bluepoli!15} FRE40 & The CPO shall be able to select the revenue percentage amount from the energy sale of each charging station.\\
     \hline
     \rowcolor{bluepoli!15} FRE41 & The system shall be able, for each charging station, to automatically decide from which energy provider to retrieve the energy from, based on the criteria chosen by the CPO.\\
@@ -278,13 +411,37 @@
     \hline
     \rowcolor{bluepoli!15} FRE45 &  The system shall allow the CPO to apply discounts for the energy prices of a managed charging station until a set expiration date.\\
     \hline
-    % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    %\rowcolor{bluepoli!5}  & Mobile Application  \newline
+    %\begin{itemize}
+     %   \item View
+      %  \item Communication Handler
+       % \item Vehicle Communication
+        %\item Suggestion Generator 
+    %\end{itemize} \\
+    %\hline
+    %\rowcolor{bluepoli!5}  & eMSP  \newline
+    %\begin{itemize}
+    %    \item Requests Handler
+     %   \item Authentication Middleware
+      %  \item Map
+       % \item eMSP Model
+    %\end{itemize} \\
+    %\hline
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item View
+        \item Authentication Middleware
+        \item Login
+        \item eMall API Handler
+        %\item eMSP Association
+        \item Charing Station Management
+        \item Energy Criteria
+        %\item Station Updates
+        \item Set Offer
+        \item CPMS Model
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline  
 \end{longtable}}
 % MAPPING GOAL 7
 \begin{longtable}{|p{0.20\linewidth}p{0.75\linewidth}|}
@@ -315,12 +472,284 @@
     \hline
     \rowcolor{bluepoli!15} FRE54& The eMSP shall be able to ask for the estimated ending time for a specific charging process.\\
     \hline
-    % Design components
-    \rowcolor{bluepoli!5} & \textbf{} \\
+    % Components
+    %\rowcolor{bluepoli!5}  & Mobile Application  \newline
+    %\begin{itemize}
+     %   \item View
+      %  \item Communication Handler
+       % \item Vehicle Communication
+        %\item Suggestion Generator 
+    %\end{itemize} \\
+    %\hline
+    \rowcolor{bluepoli!5}  & eMSP  \newline
+    \begin{itemize}
+        \item Charging Process
+        \item External Operation Controller
+        \item eMSP Model
+    \end{itemize} \\
     \hline
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline   
-    \rowcolor{bluepoli!5} & \textbf{} \\
-    \hline  
+    \rowcolor{bluepoli!5}  & CPMS  \newline
+    \begin{itemize}
+        \item View
+        \item Authentication Middleware
+        \item Login
+        \item eMall API Handler
+        \item Charing Station Management
+        \item Protocol Translator
+        \item Charging Process
+        \item Remote Operation Receiver
+        \item CPMS Model
+    \end{itemize} \\
+    \hline
 \end{longtable}
-\end{comment}
+\newpage
+\section{Mapping On Requirements}
+In the following sub sections, the mapping between a specific requirement and components is shown. In order to have a more concise table, the name of components are shorted
+\subsection{Mobile Application}
+\paragraph{Acronyms} 
+\begin{itemize} [label={--}]
+    \item \textbf{VR} View
+    \item \textbf{VC} Vehicle Communication
+    \item \textbf{MR} Map Loader
+    \item \textbf{CH} Comunication Handler
+    \item \textbf{SG} Suggestion Generator
+\end{itemize}
+\paragraph{Table}
+\begin{longtable}
+{| p{0.10\linewidth} |P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+    \textbf{ID} & \textbf{VR} & \textbf{VC}& \textbf{MR} & \textbf{CH}  & \textbf{SG} \T\B \\
+    \hline 
+    \hline
+    \textbf{FRE1} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE2} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE3} & X & & & &\T\B\\
+    \hline
+    \textbf{FRE4} & X & &X &X &\T\B\\
+    \hline
+    \textbf{FRE5} & X & &X &X &\T\B\\
+    \hline
+    \textbf{FRE6} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE7} & X & &X &X &\T\B\\
+    \hline
+    \textbf{FRE8} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE9} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE10} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE11} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE12} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE13} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE14} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE15} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE16} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE18} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE19} & X & & &X &\T\B\\
+    \hline
+    \textbf{FRE20} &  &X & & &\T\B\\
+    \hline
+    \textbf{FRE21} &  &X & & &\T\B\\
+    \hline
+    \textbf{FRE22} &  &X & & &\T\B\\
+    \hline
+    \textbf{FRE23} &X & & & &\T\B\\
+    \hline
+    \textbf{FRE24} &  & & & &X\T\B\\
+    \hline
+    \textbf{FRE25} &  &X & & &\T\B\\
+    \hline
+    \textbf{FRE26} &  &X & & &X\T\B\\
+    \hline
+    \textbf{FRE27} &X  & & & &X\T\B\\
+    \hline
+    \textbf{FRE28} &X  & & & &\T\B\\
+    \hline
+\end{longtable}
+\label{subsec:mappingOnMobileApplication}
+\subsection{eMSP Application Server}
+\paragraph{Acronyms} 
+\begin{itemize} [label={--}]
+    \item \textbf{RH} Request Handler
+    \item \textbf{LO} Login
+    \item \textbf{RE} Registration
+    \item \textbf{AM} Authentication Middleware
+    \item \textbf{MA} Map
+    \item \textbf{MB} Manage Booking
+    \item \textbf{CP} Charging Process
+    \item \textbf{PA} Payment
+    \item \textbf{EO} External Operation Controller
+    \item \textbf{SU} Station Updates
+    \item \textbf{MO} eMSP Model
+\end{itemize}
+\paragraph{Table}
+\begin{longtable}
+{| p{0.10\linewidth} |P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} |P{0.05\linewidth} |P{0.05\linewidth} |P{0.05\linewidth} |P{0.05\linewidth} |P{0.05\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+    \textbf{ID} & \textbf{RH} & \textbf{LO}& \textbf{RE} & \textbf{AM}  & \textbf{MA} & \textbf{MB} & \textbf{CP} & \textbf{PA} & \textbf{EO} & \textbf{SU} & \textbf{MO}\T\B \\
+    \hline 
+    \hline
+    \textbf{FRE1} & X & &X & & & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE2} &  &X &X & & & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE4} &X  & & &X &X & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE5} &X  & & &X &X & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE6} &X  & & &X &X & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE7} &X  & & &X &X & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE8} &X  & & &X &X & & & & & & X\T\B\\
+    \hline
+    \textbf{FRE9} &X  & & &X & &X & & & & & X\T\B\\
+    \hline
+    \textbf{FRE10} &X  & & &X & &X & & & & & X\T\B\\
+    \hline
+    \textbf{FRE11} &X  & & &X & &X & & & & & X\T\B\\
+    \hline
+    \textbf{FRE12} &X  & & &X & &X & & & & & X\T\B\\
+    \hline
+    \textbf{FRE13} &X  & & &X & & &X & & & & X\T\B\\
+    \hline
+    \textbf{FRE14} &X  & & &X & & &X & & & & X\T\B\\
+    \hline
+    \textbf{FRE15} &X  & & &X & & &X & & & & X\T\B\\
+    \hline
+    \textbf{FRE16} &  & & & & & &X & & & & X\T\B\\
+    \hline
+    \textbf{FRE17} &  & & & & & &X &X & & &X\T\B\\
+    \hline
+    \textbf{FRE19} &X  & & & & & & &X & & &X\T\B\\
+    \hline
+    \textbf{FRE26} &X  & & &X &X & & & & & &X\T\B\\
+    \hhline{============}
+    \textbf{FRE47} &  & & & & & & & & &X &X\T\B\\
+    \hline
+    \hhline{============}
+    \textbf{FRE48} &  & & & & &X& & &X & &X\T\B\\
+    \hline
+    \textbf{FRE49} &  & & & & &X& & &X & &X\T\B\\
+    \hline
+    \textbf{FRE50} &  & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE51} &  & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE52} &  & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE53} &  & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE54} &  & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE55} &  & & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE56} &  & & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE57} &  & & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE58} &  & & & & & & & & &X &X\T\B\\
+    \hline
+\end{longtable}
+\label{subsec:mappingOneMSP}
+\newpage
+\subsection{CPMS}
+\paragraph{Acronyms} 
+\begin{itemize} [label={--}]
+    \item \textbf{VR} View
+    \item \textbf{AM} Authentication Middleware
+    \item \textbf{LO} Login
+    \item \textbf{CS} Charging Station Management
+    \item \textbf{EA} eMSP Association
+    \item \textbf{EM} eMall API Handler
+    \item \textbf{EC} Energy Criteria
+    \item \textbf{SO} Set Offer
+    \item \textbf{PC} Price Calculation
+    \item \textbf{CP} Charging Process
+    \item \textbf{BO} Booking
+    \item \textbf{PT} Protocol Translator
+    \item \textbf{RO} Remote Operation Receiver
+    \item \textbf{SU} Station Updates
+    \item \textbf{MO} CPMS Model
+\end{itemize}
+\paragraph{Table}
+\begin{longtable}
+{| P{0.085\linewidth} |P{0.04\linewidth} | P{0.044\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |}
+    \hline
+    \rowcolor{bluepoli!40}
+    \textbf{ID} & \textbf{VR} & \textbf{AM}& \textbf{LO} & \textbf{CS}  & \textbf{EA} & \textbf{EM} & \textbf{EC} & \textbf{SO} & \textbf{PC} & \textbf{CP} & \textbf{BO} & \textbf{PT} & \textbf{RO} & \textbf{SU }&\textbf{MO}\T\B \\
+    \hline 
+    \hline
+    \textbf{FRE29} & X &X &X & & &X & & & & & & & & &\T\B\\
+    \hline
+    \textbf{FRE30} & X & & & & & & & & & & & & & &\T\B\\
+    \hline
+    \textbf{FRE31} & X &X &X&X & & & & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE32} & X &X & &X & & & & & & & &X & & &X\T\B\\
+    \hline
+    \textbf{FRE33} & X &X & &X & & & & & & & &X & & &\T\B\\
+    \hline
+    \textbf{FRE34} & X &X & &X & & & & & & & &X & & &\T\B\\
+    \hline
+    \textbf{FRE35} & X &X & &X & & & & & & & &X & & &\T\B\\
+    \hline
+    \textbf{FRE36} & X &X & &X & & & & & & & &X & & &\T\B\\
+    \hline
+    \textbf{FRE37} &  & & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE38} &  & & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE39} &X  &X & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE40} &X  &X & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE41} &X  &X & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE42} &  & & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE43} &  & & & & & & & &X &X & & & & &X\T\B\\
+    \hline
+    \textbf{FRE44} &  & & & & & &X & & & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE45} &X  &X & & & & & &X& & & & & & &X\T\B\\
+    \hline
+    \textbf{FRE46} &X  &X & & &X &X & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE47} &X  &X & & &X &X & & & & & & & &X &X\T\B\\
+    \hhline{================}
+    \textbf{FRE48} &  & & & & & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE49} &  & & & & & & & & & &X & &X & &X\T\B\\
+    \hline
+    \textbf{FRE50} &  & & & & & & & & &X & & &X & &X\T\B\\
+    \hline
+    \textbf{FRE51} &  & & & & & & & & &X & & &X & &X\T\B\\
+    \hline
+    \textbf{FRE52} &  & & & & & & & & &X & & &X & &X\T\B\\
+    \hline
+    \textbf{FRE53} &  & & & & & & & &X &X & & &X & &X\T\B\\
+    \hline
+    \textbf{FRE54} &  & & & & & & & & &X & & &X & &X\T\B\\
+    \hline
+    \textbf{FRE55} &  & & & & & & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE56} &  & & & & & & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE57} &  & & & & & & & & & & & & &X &X\T\B\\
+    \hline
+    \textbf{FRE58} &  & & & & & & & & & & & & &X &X\T\B\\
+    \hline
+\end{longtable}
