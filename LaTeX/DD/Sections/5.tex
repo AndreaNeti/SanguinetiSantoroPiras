@@ -13,35 +13,47 @@ If the workforce is not big enough to implement all the components in parallel, 
     \begin{center}
     \includegraphics[
         width=\textwidth,
-        height=0.75\textheight,
+        height=0.67\textheight,
         keepaspectratio]{Gantt/eMSP Gantt}
     \caption{eMSP Gantt Diagram}
     \label{fig:eMSPGantt}
     \end{center}
 \end{figure}
-
+\begin{itemize}
+    \item \textbf{External Communication Group:} Components required for communicating with the Driver, APIs and the CPMS.
+    \item \textbf{Logged Driver Operations Group:} Components required for processing requests performed by the Driver on the mobile application.
+    \item \textbf{Auth Groups}: Components required for the authentication and registration of the Driver.
+    \item \textbf{View Group}: Components required for the visualization of the mobile application.
+    \item \textbf{Application Group}: Components required for the logic of the user interface.
+\end{itemize}
 \subsubsection{CPMS Gantt Diagram}
 \begin{figure}[H]
     \begin{center}
     \includegraphics[
         width=\textwidth,
-        height=0.75\textheight,
+        height=0.66\textheight,
         keepaspectratio]{Gantt/CPMS Gantt}
     \caption{CPMS Gantt Diagram}
     \label{fig:CPMSGantt}
     \end{center}
 \end{figure}
-\newpage
+\begin{itemize}
+    \item \textbf{View Group:} Components required for the visualization of the user interface.
+    \item \textbf{External Communication Group:} Components required for communicating with the eMSP, APIs and stations.
+    \item \textbf{External Operation Group}: Components required for processing requests performed by the Drivers through the eMSPs.
+    \item \textbf{Internal Charging Station Status Group}: Components required for processing requests performed by the CPO.
+    \item \textbf{Auth Groups}: Components required for the authentication and registration of the CPO.
+\end{itemize}
 \section{System Testing}
 \label{sec:systemTesting}%
-Since all the components could be developed in parallel, a good practice would be to use a TDD approach for the integration testing of the components. This involves writing a test for each interface method of each component as the interface is being developed. These tests will initially fail and only pass once the component has been implemented. In addition, unit testing should be performed for each component after implementation. This means that the testing phase will be integrated throughout the entire implementation process, rather than just at the end.
+Since all the components could be developed in parallel, a good practice would be to use a TDD approach for the integration testing of the components. This involves writing a test for all interface methods of each component as the interface is being developed. These tests will initially fail and only pass once the component has been implemented. In addition, unit testing should be performed for each component after implementation. This means that the testing phase will be integrated throughout the entire implementation process, rather than just at the end.
 Overall we can split the testing phase into different parts:
 \begin{enumerate}
     \item \textbf{Interfaces test writing: }Write tests for each interface method. All of them should fail.
     \item \textbf{Integration testing: }After a single component is developed and has replaced its stub, it should pass the test for its external interface.
     \item \textbf{Unit testing: }After a single component is developed, the developer should write tests in order to assure that every function inside that component is working in the proper way.
     \item \textbf{Performance testing: }After all the components have been developed and integrated, then there should be performance testing to make sure that there aren't any bottlenecks.
-    \item \textbf{Load testing: }Load testing should be done in order to avoid bugs such as memory leaks or buffer overflows. There is also the possibility to test the system in order to understand how long it can resist at the maximum load.
+    \item \textbf{Load testing: }Load testing should be done in order to avoid bugs such as memory leaks or buffer overflows. There is also the possibility to test the system in order to understand how long it can withstand the maximum load.
     \item \textbf{Stress testing: }Stress testing is used to make sure that the system recovers carefully from a failure.
     \item \textbf{Networking testing: }Networking testing is used to make sure that the system can maintain its behaviour in case of a down node.
     \item \textbf{Acceptance testing: }This part should be the last part of the project, done with the stakeholders. It should check if the project respects the requirements and if the system satisfies the assignment.

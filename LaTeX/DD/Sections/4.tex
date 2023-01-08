@@ -111,8 +111,7 @@
     \hline
     \rowcolor{bluepoli!15} FRE18 & Every time the system fails to elaborate an operation related to a Driver, then he shall receive a notification containing the error details. \\
     \hline
-    \rowcolor{bluepoli!15}
-    FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
+    \rowcolor{bluepoli!15} FRE46 & The CPO shall be able to see a list of all the existing eMSPs. \\
     \hline
     \rowcolor{bluepoli!15} FRE47 &  The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
     \hline
@@ -120,9 +119,9 @@
     \hline
     \rowcolor{bluepoli!15} FRE49 & The eMSP shall be able to delete a previously booked charge on a single CPMS\\
     \hline
-    \rowcolor{bluepoli!15} FRE55 & If CPMS can calculate the estimated time before each charging type becomes available, CPMS updates the availability of a charging station with the estimated time, otherwise CPMS updates only the availability. \\
+    \rowcolor{bluepoli!15} FRE55 & If CPMS can calculate the estimated time before each charging type becomes available, CPMS updates the availability of a charging station with the estimated time otherwise, CPMS updates only the availability. \\
     \hline
-    \rowcolor{bluepoli!15} FRE58 & CPMS updates about the data of the newly created charging station such as location, prices, supported charging type. \\
+    \rowcolor{bluepoli!15} FRE58 & CPMS updates about the data of the newly created charging station such as location, prices and supported charging type. \\
     \hline
     % Components
     \rowcolor{bluepoli!5}  & Mobile Application  \newline
@@ -195,7 +194,7 @@
     \hline
     \rowcolor{bluepoli!15} FRE47 &  The CPO shall be able to decide which eMSP he wants to associate with his CPMS in order to permit communication between the two systems \\
     \hline
-    \rowcolor{bluepoli!15} FRE50 & The eMSP shall be able to start a charge on a singleCPMS. \\
+    \rowcolor{bluepoli!15} FRE50 & The eMSP shall be able to start a charge on a single CPMS. \\
     \hline
     \rowcolor{bluepoli!15} FRE51 & The eMSP shall be notified when the vehicle is not well connected to the charging socket on a single CPMS \\
     \hline
@@ -508,9 +507,9 @@ In the following sub sections, the mapping between a specific requirement and co
 \subsection{Mobile Application}
 \paragraph{Acronyms} 
 \begin{itemize} [label={--}]
-    \item \textbf{VR} View
+    \item \textbf{V} View
     \item \textbf{VC} Vehicle Communication
-    \item \textbf{MR} Map Loader
+    \item \textbf{ML} Map Loader
     \item \textbf{CH} Comunication Handler
     \item \textbf{SG} Suggestion Generator
 \end{itemize}
@@ -519,7 +518,7 @@ In the following sub sections, the mapping between a specific requirement and co
 {| p{0.10\linewidth} |P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} | P{0.05\linewidth} |}
     \hline
     \rowcolor{bluepoli!40}
-    \textbf{ID} & \textbf{VR} & \textbf{VC}& \textbf{MR} & \textbf{CH}  & \textbf{SG} \T\B \\
+    \textbf{ID} & \textbf{V} & \textbf{VC}& \textbf{ML} & \textbf{CH}  & \textbf{SG} \T\B \\
     \hline 
     \hline
     \textbf{FRE1} & X & & &X &\T\B\\
@@ -668,7 +667,7 @@ In the following sub sections, the mapping between a specific requirement and co
 \subsection{CPMS}
 \paragraph{Acronyms} 
 \begin{itemize} [label={--}]
-    \item \textbf{VR} View
+    \item \textbf{V} View
     \item \textbf{AM} Authentication Middleware
     \item \textbf{LO} Login
     \item \textbf{CS} Charging Station Management
@@ -686,10 +685,10 @@ In the following sub sections, the mapping between a specific requirement and co
 \end{itemize}
 \paragraph{Table}
 \begin{longtable}
-{| P{0.085\linewidth} |P{0.04\linewidth} | P{0.044\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |}
+{| P{0.085\linewidth} |P{0.03\linewidth} | P{0.044\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} | P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |P{0.04\linewidth} |}
     \hline
     \rowcolor{bluepoli!40}
-    \textbf{ID} & \textbf{VR} & \textbf{AM}& \textbf{LO} & \textbf{CS}  & \textbf{EA} & \textbf{EM} & \textbf{EC} & \textbf{SO} & \textbf{PC} & \textbf{CP} & \textbf{BO} & \textbf{PT} & \textbf{RO} & \textbf{SU }&\textbf{MO}\T\B \\
+    \textbf{ID} & \textbf{V} & \textbf{AM}& \textbf{LO} & \textbf{CS}  & \textbf{EA} & \textbf{EM} & \textbf{EC} & \textbf{SO} & \textbf{PC} & \textbf{CP} & \textbf{BO} & \textbf{PT} & \textbf{RO} & \textbf{SU }&\textbf{MO}\T\B \\
     \hline 
     \hline
     \textbf{FRE29} & X &X &X & & &X & & & & & & & & &\T\B\\

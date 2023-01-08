@@ -25,7 +25,7 @@ The CPMS application will be instead a monolithic application that will include 
     \item \textbf{Deployment}: The application is easy to deploy and can be contained in a single package ready to be executed by a server owned by the CPO
     \item \textbf{Integration}: Since the application's interfaces are well-defined and consistent it will be easier to integrate with other applications such as the eMSP.
 \end{itemize}
-During the development of the subsystem, it is important to consider how the eMSP and the CPMSs will communicate. When the eMSP needs to perform an operation on a specific CPMS (such as starting the charging process), it will send a request with the specific operation. Additionally, whenever there is a relevant update to charging station data, the CPMS will send the updated data to all previously associated eMSPs through a specific component. This asynchronous method of reading data for the charging stations is necessary because it allows the eMSP to store all updated data from the CPMS, improving scalability for drivers. If the data were read synchronously, the eMSP would need to send a request to the specific CPMS every time a driver wants to check charging station information, which could reduce scalability as the number of drivers increases.
+During the development of the subsystem, it is important to consider how the eMSP and the CPMSs will communicate. When the eMSP needs to perform an operation on a specific CPMS (such as starting the charging process), it will send a request with the specific operation. Additionally, whenever there is a relevant update to charging station data, the CPMS will send the updated data to all previously associated eMSPs through a specific component. This asynchronous method of reading data for the charging stations is necessary because it allows the eMSP to store all updated data from the CPMS, improving scalability for Drivers. If the data were read synchronously, the eMSP would need to send a request to the specific CPMS every time a Driver wants to check charging station information, which could reduce scalability as the number of Drivers increases.
 \section{Component View} %AS
 \label{sec:componentView}
 In this section, the component view of the two systems is presented with a high level component diagram, which also highlights external interface interaction. \\% highlevel diagram
@@ -53,7 +53,7 @@ In the following sections, detailed diagrams are constructed in the same manner 
 \begin{itemize}
     \item \textbf{Map Loader}: Component that will handle the communication with the Maps external API.
     \item \textbf{Vehicle Communication}: Component that will handle the communication with the vehicle.
-    \item \textbf{Suggestion Generator}: Component that will handle the creation of personalised suggestions for the user.
+    \item \textbf{Suggestion Generator}: Component that will handle the creation of personalised suggestions for the Driver.
     \item \textbf{Communication Handler}: Component that will handle the communication with the eMSP Application Server.
 \end{itemize}
 \subsubsection{eMSP Application Server}
@@ -63,7 +63,7 @@ All components of the eMSP Application Server belong to the Logic level.
 \begin{itemize}
     \item \textbf{Requests Handler}: Component that will handle all the received requests.
     \item \textbf{Login}: Component that will handle the login request and authenticate a Driver.
-    \item \textbf{Registration}: Component that will handle the registration requests and create a new account for a driver.
+    \item \textbf{Registration}: Component that will handle the registration requests and create a new account for a Driver.
     \item \textbf{Authentication Middleware}: Component that will handle every request checking if the Driver requesting is authenticated and forwarding the request to the respective component.
     \item \textbf{Map}: Component that will handle requests for the charging stations present on the map based on their location.
     \item \textbf{Manage Booking}: Component that will handle booking requests by creating or deleting them.
@@ -152,7 +152,7 @@ The following deployment diagram shows the execution architectures of the system
 The following sequence diagrams depict the behaviour of the key components of the eMSP and the CPMS subsystems. These diagrams provide a high-level overview of the interaction between the various components. Further details and implementation will be addressed during the development process.
 \subsection{Sequence Diagrams}
 \label{subsec:sequenceDiagrams}
-A detail that should be noticed in the following sequence diagram, is the async request made by the \textit{View} (Both for the eMSP and the CPMS). This is needed in order to let the driver have a responsive and fluid user interface. 
+A detail that should be noticed in the following sequence diagrams, is the async request made by the \textit{View} (Both for the eMSP and the CPMS). This is needed in order to let the Driver have a responsive and fluid user interface. 
 \begin{enumerate}
     
     \item \textbf{Driver Authentication Check}
@@ -166,7 +166,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:DriverAuth}
             \end{center}
         \end{figure}
-        The figure illustrates the process of authenticating a Driver for every request, except for login and registration. The \textit{Specific Component} in the figure refers to the component capable of responding to the Driver's request. If the driver is not authenticated, their mobile application will be redirected to the login view. To implement the isLogged(session) function in the sequence diagram and create a session to identify the Driver, it is recommended to use a technology like JWT, which avoids the need to query the DBMS.[\ref{jwt}]\\
+        The figure illustrates the process of authenticating a Driver for every request, except for login and registration. The \textit{Specific Component} in the figure refers to the component capable of responding to the Driver's request. If the Driver is not authenticated, their mobile application will be redirected to the login view. To implement the isLogged(session) function in the sequence diagram and create a session to identify the Driver, it is recommended to use a technology like JWT, which avoids the need to query the DBMS.[\ref{jwt}]\\
         
         \newpage
         \item \textbf{Driver Registration}
@@ -180,7 +180,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:DriverRegistration}
             \end{center}
         \end{figure}
-        The figure shows the process of the creation of a new account for a Driver. In particular, if the Driver wants to register himself on the platform, he should insert a valid payment method and credentials otherwise, the process will fail.
+        The figure shows the process of the creation of a new account for a Driver. In particular, if the Driver wants to register himself on the platform, he should insert a valid payment method and credentials, otherwise the process will fail.
         \newpage
         \item \textbf{Driver Login}
         \begin{figure}[H]
@@ -219,7 +219,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:CheckStationInfo}
             \end{center}
         \end{figure}
-        The figure shows the process of a Driver checking station info such as his availability, charging types and offers.
+        The figure shows the process of a Driver checking station info such as its availability, prices and offers.
         \newpage
         \item \textbf{Create Booking}
         \begin{figure}[H]
@@ -232,7 +232,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:CreateBooking}
             \end{center}
         \end{figure}
-        The figure shows the process of the creation of a booking. After the Driver makes the request, the eMSP application server will process the request and make a new request to the specific CPMS that will answer (if there is no error) with the booked socket id that will be shown to the Driver. Besides, since there is a change in station availability, CPMS updates all the associated eMSP with the new data.
+        The figure shows the process of the creation of a booking. After the Driver makes the request, the eMSP application server will process the request and make a new request to the specific CPMS that will answer (if there is no error) with the booked socket ID that will be shown to the Driver. Besides, since there is a change in station availability, CPMS updates all the associated eMSPs with the new data.
         \newpage
         \item \textbf{Delete Booking}
         \begin{figure}[H]
@@ -245,7 +245,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:DeleteBooking}
             \end{center}
         \end{figure}
-        The figure shows the process of the deletion of a previously created booking. The process is similar to the previous one. When the CPMS updates the availability of a charging station, it sends a null value for the estimated time to indicate that the station is currently available.
+        The figure shows the process of the deletion of a previously created booking. The process is similar to the previous one. When the CPMS updates the availability of a charging station, it sends a null estimated time value to indicate that the station is currently available.
         \newpage
         \item \textbf{Suggestion Generation and Notification}
         \begin{figure}[H]
@@ -258,7 +258,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:Suggestion}
             \end{center}
         \end{figure}
-       The figure shows the process for generating a suggestion. It will be generated on the mobile application by fetching data from the Driver's vehicle, Driver's calendar APIs and eMSP application server (in order to retrieve charging station info). 
+       The figure shows the process for generating a suggestion. It will be generated on the mobile application by fetching data from the Driver's vehicle, Driver's calendar API and eMSP Application Server (in order to retrieve charging station info such as availability, prices and offers). 
        \newpage
         \item \textbf{Start Charging Process}
         \begin{figure}[H]
@@ -271,7 +271,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:StartCharge}
             \end{center}
         \end{figure}
-        The figure shows the process for starting a charging process. After the Driver clicks the button, the request will be sent to the eMSP application server and from there, to the specific CPMS that will make a check for correct plugging. The charging process won't start until the car is well connected. After it started, CPMS will answer the eMSP with the estimated time remaining, calculate the new station availability info and update every associated eMSPs if there is any updated data. 
+        The figure shows the process for starting a charging process. After the Driver clicks the start charging button, the request will be sent to the eMSP Application Server and from there, to the specific CPMS that will make a check for correct plugging. The charging process won't start until the car is well connected. After it started, CPMS will answer the eMSP with the estimated time remaining, calculate the new station availability for the charging type used and update all the associated eMSPs. 
         \newpage
         \item \textbf{Stop Charging Process}
         \begin{figure}[H]
@@ -284,7 +284,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:StopCharge}
             \end{center}
         \end{figure}
-        The figure shows the process for stopping a charging process. It starts when the Driver clicks on a specific button. After receiving the response, the user will receive as shown in the following sequence diagram the notification that the charging process has finished.
+        The figure shows the process for stopping a charging process. It starts when the Driver clicks on the stop charging button. After receiving the response, the Driver will receive as shown in the following sequence diagram the notification that the charging process has finished.
         \newpage
         \item \textbf{Charging Process Ends}
         \begin{figure}[H]
@@ -297,7 +297,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:EndCharge}
             \end{center}
         \end{figure}
-        The figure shows the process that is executed when a charging process ends. The \textit{Protocol Translator} is going to be the component that will detect the ends of a charging process and will start the corresponding flow. In particular, the CPMS will update every associated eMSPs for charging station availability and then, notify the specific eMSP that made the booking through an async request, with the amount needed to be paid. The eMSP will notify the Driver about the ending of the charging process and once it will finish the payment, it will send another notification to the Driver. This type of async call between eMSPs and CPMSs is advised to be implemented through some sort of callback function such as HTTP webhook. [\ref{webhook}]
+        The figure shows the process that is executed when a charging process ends. The \textit{Protocol Translator} is going to be the component that will detect the end of a charging process and will start the corresponding flow. In particular, the CPMS will update every associated eMSPs for charging station availability and then, notify the specific eMSP that made the booking through an async request, with the amount needed to be paid. The eMSP will notify the Driver about the ending of the charging process and once completed the payment, it will send another notification to the Driver. This type of async call between eMSPs and CPMSs is advised to be implemented through some sort of callback function such as HTTP webhook. [\ref{webhook}]
         \newpage
         \item \textbf{CPO Authentication}
         \begin{figure}[H]
@@ -336,7 +336,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:ManageStation}
             \end{center}
         \end{figure}
-        The figure shows the process executed when the CPO wants to see the info of one of his stations such as availability, battery status, power consumption, vehicle numbers and estimated time.
+        The figure shows the process executed when the CPO wants to see the info of one of his stations managed by his CPMS such as sockets availability, internal battery status, the number of connected vehicles, their power consumption and estimated time to finish the charging process.
         \newpage
         \item \textbf{Add Station To CPMS}
         \begin{figure}[H]
@@ -349,7 +349,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:AddStation}
             \end{center}
         \end{figure}
-        The figure shows the process for adding a new charging station. The CPMS with \textit{Protocol Translator} component will detect the charging station and the CPMS can add one of them by inserting all the required data. Once the station is added, the CPMS will updates all associated eMSPs and then redirect the CPO to the \textit{energyCriteriaView}.
+        The figure shows the process for adding a new charging station. The CPMS, through its \textit{Protocol Translator} component, will detect charging stations that can be added to the system and the CPO can add one of them by inserting all the required data. Once the station is added, the CPMS will update all the associated eMSPs and then redirect the CPO to the \textit{energyCriteriaView}.
         \newpage
         \item \textbf{Set Offer}
         \begin{figure}[H]
@@ -362,7 +362,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:SetOffer}
             \end{center}
         \end{figure}
-        The figure shows the process when the CPO sets a new offer related to a charging station. After he sets the charging type or discount or expiration date for an offer the CPMS checks the validity and then updates all the associated eMSPs
+        The figure shows the process when the CPO sets a new offer related to a charging station. After he sets the charging type, discount and expiration date for an offer, the CPMS will check the validity and will then update all the associated eMSPs
         \newpage
         \item \textbf{Update Energy Criteria}
         \begin{figure}[H]
@@ -375,7 +375,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:UpdateCriteria}
             \end{center}
         \end{figure}
-        The figure shows the process when the CPO update the energy criteria: both the acquisition and the revenue. With the acquisition criterion, the CPO can select how the CPMS will automatically take energy from the best energy provider respecting the chosen criterion, meanwhile with the revenue, the CPO can set the percentage of gain that he will get based on the energy price.
+        The figure shows the process of the CPO updating the energy criteria (both acquisition and revenue) for a charging station. With the acquisition criterion, the CPO can select how the CPMS will automatically decide the best energy providers where to take energy from, respecting the chosen criterion, meanwhile, with the revenue, the CPO can set the percentage of gain that he will get from the services provided, based on the energy price.
         \newpage
         \item \textbf{eMSP Association}
         %\begin{tabbing}
@@ -392,7 +392,7 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:eMSPAssociation}
             \end{center}
         \end{figure}
-        The figure shows the process of association between CPMS and eMSP. Without this process, the two subsystems won't be able to communicate. The first time a CPMS associate itself with the eMSP, it will also send all the existing data about its charging station.
+        The figure shows the process of association between the CPMS and eMSPs. Without this process, the two subsystems won't be able to communicate. The first time a CPMS associates itself with an eMSP, it will also send all the existing data about its managed charging stations.
 \end{enumerate}
 \section{Component Interfaces} %AP
 \label{sec:componentInterfaces}
@@ -406,40 +406,44 @@ A detail that should be noticed in the following sequence diagram, is the async 
             \label{fig:ComponentInterfaces}
             \end{center}
         \end{figure}
-\section{Selected Architectural Styles and Patterns} %AS
+\section{Architectural Styles and Patterns} %AS
 \label{sec:artchitecturalStylesPatterns}
 \subsection{Architectural Styles}
-In the overview section, a description is provided of how a three-tier client-server architecture has been used to design the eMSP system, while a monolithic architecture has been used to design the CPMS. For communication between the mobile application, eMSP server, and CPMS, a REST architecture was chosen. In particular, the communication can be integrated using a webhook [\ref{webhook}] to allow for HTTP callbacks.
+In the overview section, a description is provided of how a three-tier client-server architecture has been used to design the eMSP system, while a monolithic architecture has been used to design the CPMS. \\
+For communication between the eMSP Mobile Application, eMSP server, and CPMS, a REST architecture was chosen. In particular, the communication can be integrated using a webhook [\ref{webhook}] to allow for HTTP callbacks.
 \label{subsec:architecturalStyles}
 \subsection{Patterns}
-Recommended pattern to implement the application:
+Suggested patterns to implement the application:
 \begin{itemize}
 
 \item \textbf{Model-View-Controller Pattern (MVC) : }It is an architectural pattern which divides
 the application into three interconnected parts. It is used to separate how the information is represented inside the system from what the user actually sees. It is a really good and easy pattern to use when a system is based on a three-tier architecture.
-\item \textbf{Observer Pattern (OP)}: It simplifies the communications between objects, notifying changes in the state of other specific objects.
-\item \textbf {Service-Oriented Architecture (SOA): } This pattern involves building the system as a collection of independent, self-contained services that communicate with each other through APIs. This can make it easier to scale and maintain the system, as changes to one service do not necessarily affect the others
-\item \textbf{Model-View-ViewModel (MVVM): } This pattern is similar to MVC, but the ViewModel component is responsible for exposing the data and logic of the model in a way that is consumable by the view. This can make it easier to develop and test the user interface for the mobile application.
+\item \textbf{Observer Pattern (OP)}: It simplifies the communications between objects, notifying changes in the state of other specific objects. For example, it could be adopted by the Station Update component of the CPMS to observe the model and then notify any changes regarding charging stations data to all associated eMSPs.
+\begin{comment}
+\item \textbf {Service-Oriented Architecture (SOA): } This pattern involves building the system as a collection of independent, self-contained services that communicate with each other through APIs. This can make it easier to scale and maintain the system, as changes to one service do not necessarily affect the others.
+\end{comment}
+\item \textbf{Model-View-ViewModel (MVVM):} This pattern is similar to MVC, but the ViewModel component is responsible for exposing the data and logic of the model in a way that is consumable by the view. This can make it easier to develop and test the user interface for the mobile application.
 \end{itemize}
 \label{subsec:patterns}
+\newpage
 \section{Other Design Decisions}
 This system is designed on the constraint that it will interact with external services. From these external services, the system needs to fetch data or perform operations. In particular, the following are the interfaces that both the eMSP and CPMS are going to use:
 \paragraph{Mobile Application}
 \begin{itemize}
-    \item \textbf{MAP Provider API: } From this interface, the mobile application can fetch the data needed to show the user the location of the station, and the area around it.
-    \item \textbf{Calendar API: } From this interface, the mobile application can fetch the data needed to create a more personalized suggestion for the user.
-    \item \textbf{Vehicle Connection: } From this interface, the mobile application can fetch the data needed to create a more personalized suggestion for the user.
+    \item \textbf{Map Provider API: }From this interface, the mobile application can fetch the data needed to show the Driver the map where charging stations will be viewed on.
+    \item \textbf{Calendar API: }From this interface, the mobile application can fetch the Driver's calendar events needed to create more personalized suggestions.
+    \item \textbf{Vehicle Connection: }From this interface, the mobile application can fetch data such as navigation routes, the battery level and the location needed to create more personalized suggestions for the Driver and for positioning the eMSP map where the Driver is.
 \end{itemize}
 \paragraph{eMSP}
 \begin{itemize}
-    \item \textbf{Payment API: } From this interface, the eMSP can handle all the payments without needing to implement a new payment system.
-    \item \textbf{DBMS API: } From this interface, the eMSP can perform operations in order to store data and read them.
+    \item \textbf{Payment API: }From this interface, the eMSP can handle all the payments between Drivers and CPOs without needing to implement a payment system from scratch.
+    \item \textbf{DBMS API: }From this interface, the eMSP can perform operations in order to store data and read them. An idea would be to use a framework like JPA (Java Persistence API) [\ref{jpa}] to keep the database synced with the model component.
 \end{itemize}
 \paragraph{CPMS}
 \begin{itemize}
-    \item \textbf{External Charging Station/Socket API: } From this interface, the CPMS can communicate with charging stations or sockets in order to perform operations or receive notifications about a specific event happening.
-    \item \textbf{eMALL API: } From this interface, the CPMS can fetch the data of all the eMSPs in order to associate itself with them and also check the authenticity of a CPO.
-    \item \textbf{DSO API: } From this interface, the CPMS can fetch all the information exposed by a DSO about the energy. It is needed to remind that all the DSOs have homogenous APIs
-    \item \textbf{DBMS API: } From this interface, the CPMS can perform operations in order to store data and read them.
+    \item \textbf{External Charging Station/Socket API: }From this interface, the CPMS can communicate with charging stations or sockets in order to perform operations or receive notifications about a specific event happening.
+    \item \textbf{eMall API: }From this interface, the CPMS can fetch the data of all the eMSPs in order to associate itself with them and also check the authenticity of a CPO.
+    \item \textbf{DSO API: }From this interface, the CPMS can fetch all the information provided by a DSO about the energy. It is important to remind that all the DSOs have homogenous APIs
+    \item \textbf{DBMS API: }From this interface, the CPMS can perform operations in order to store data and read them. An idea would be to use a framework like JPA (Java Persistence API) [\ref{jpa}] to keep the database synced with the model component.
 \end{itemize}
 \label{sec:otherDesign}
